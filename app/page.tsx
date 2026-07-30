@@ -2,6 +2,7 @@
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import Categories from "@/components/Categories";
+import PortfolioGrid from "@/components/PortfolioGrid";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <Categories />
+      <PortfolioGrid />
     </main>
   );
 }
