@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Design Studio — Custom Websites That Convert",
+  title: "CodeDesignHub — Custom Websites That Convert",
   description:
     "Landing page & UI/UX design for SaaS, real estate, healthcare and more.",
 };

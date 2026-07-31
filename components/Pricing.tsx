@@ -24,7 +24,7 @@ const tiers = [
 
 export default function Pricing() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-16 md:py-24 bg-[color:var(--surface)]">
+    <section id="pricing" className="mx-auto max-w-6xl px-6 py-16 md:py-24 bg-[color:var(--surface)]">
       <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-wider text-[color:var(--accent)]">
         Simple Pricing
       </span>

@@ -6,6 +6,7 @@ const navLinks = [
   { label: "Portfolio", href: "#portfolio" },
   { label: "Services", href: "#services" },
   { label: "Categories", href: "#categories" },
+  { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -15,9 +16,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-[color:var(--bg)]/90 backdrop-blur border-b border-black/10">
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-        <a href="#" className="font-[family-name:var(--font-display)] text-lg font-bold">
-          Studio<span className="text-[color:var(--accent)]">.</span>
-        </a>
+       <a href="#" className="font-[family-name:var(--font-display)] text-lg font-bold">
+          CodeDesignHub<span className="text-[color:var(--accent)]">.</span>
+       </a>
 
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (

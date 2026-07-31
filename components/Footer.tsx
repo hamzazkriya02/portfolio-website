@@ -6,6 +6,7 @@ const quickLinks = [
 ];
 
 const socialLinks = [
+{ label: "Pinterest", href: "https://www.pinterest.com/codeanddesignhub/" },
   { label: "Instagram", href: "https://instagram.com/" },
   { label: "LinkedIn", href: "https://linkedin.com/in/muhammad-hamza-315hz02" },
   { label: "TikTok", href: "https://www.tiktok.com/@codewithhamza02" },
@@ -20,8 +21,8 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
         <div>
           <span className="font-[family-name:var(--font-display)] text-lg font-bold">
-            Studio<span className="text-[color:var(--accent)]">.</span>
-          </span>
+  CodeDesignHub<span className="text-[color:var(--accent)]">.</span>
+</span>
           <p className="text-sm text-[color:var(--muted)] mt-3">
             Custom website designs that turn visitors into clients.
           </p>
@@ -64,7 +65,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-black/10 py-4 text-center text-xs text-[color:var(--muted)]">
-        © {year} Studio. All rights reserved.
+        © {year} CodeDesignHub. All rights reserved.
       </div>
     </footer>
   );
