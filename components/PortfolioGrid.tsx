@@ -100,8 +100,7 @@ export default function PortfolioGrid() {
           {filtered.map((design) => (
             <div key={design.id} className="group border border-black/10 rounded-xl overflow-hidden hover:shadow-lg transition">
               <div className="relative h-48 bg-[color:var(--surface)]">
-              <Image src={design.src} alt={design.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover" />              </div>
-              <div className="p-4">
+            <Image src={design.src} alt={design.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" quality={75} className="object-cover" />             
                 <span className="font-[family-name:var(--font-mono)] text-xs text-[color:var(--accent)] uppercase">
                   {design.category}
                 </span>
