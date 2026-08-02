@@ -5,7 +5,7 @@ const mockups = [
 ];
 
 export default function Hero() {
-  const whatsappNumber = "923094552361"; // apna number yahan daalein
+  const whatsappNumber = "923094552361"; 
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">

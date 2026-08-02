@@ -37,7 +37,7 @@ const designs = [
   { id: 25, title: "Education Design 3", category: "Education", src: "/designs/education/edu3.png" },
   { id: 26, title: "Education Design 4", category: "Education", src: "/designs/education/edu4.png" },
   { id: 27, title: "Education Design 5", category: "Education", src: "/designs/education/edu5.png" },
-  { id: 28, title: "Education Design 6", category: "Education", src: "/designs/education/edu6.jpeg" },
+  { id: 28, title: "Education Design 6", category: "Education", src: "/designs/education/edu6.png" },
 
   // AI, Architecture, aur Finance abhi "coming soon" show kar rahe hain kyunke images nahi hain.
   // Jab images public/designs/ai, public/designs/architecture, public/designs/finance mein daal dein,
