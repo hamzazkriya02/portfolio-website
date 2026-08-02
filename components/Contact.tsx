@@ -25,10 +25,9 @@ export default function Contact() {
             </a>
           </div>
 
-          <p className="text-[color:var(--muted)] text-sm mt-6">
-            Email: <a href={`mailto:${email}`} className="text-[color:var(--accent)]">{email}</a>
+         <p className="text-[color:var(--muted)] text-sm mt-6">
+            Email: <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`} target="_blank" className="text-[color:var(--accent)]">{email}</a>
           </p>
-
           <a href={blogUrl} target="_blank" className="inline-block mt-4 text-sm text-[color:var(--accent)] underline">
             Read My Blog →
           </a>
