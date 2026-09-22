@@ -1,71 +1,116 @@
-const quickLinks = [
-  { label: "Categories", href: "#categories" },
-  { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Contact", href: "#contact" },
+import Link from "next/link";
+import { siteConfig, whatsappUrl } from "@/data/site";
+
+const navigation = [
+  { label: "Design Library", href: "/designs" },
+  { label: "Services", href: "/#services" },
+  { label: "About", href: "/about" },
+  { label: "Insights", href: "/insights" },
+  { label: "Contact", href: "/contact" },
 ];
 
-const socialLinks = [
-{ label: "Pinterest", href: "https://www.pinterest.com/codeanddesignhub/" },
-  { label: "Instagram", href: "https://instagram.com/" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/muhammad-hamza-315hz02" },
-  { label: "TikTok", href: "https://www.tiktok.com/@codewithhamza02" },
+const legal = [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
 ];
 
 export default function Footer() {
-  const blogUrl = "https://webdesignhub02.blogspot.com/";
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-black/10 bg-[color:var(--surface)]">
-      <div className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
-        <div>
-          <span className="font-[family-name:var(--font-display)] text-lg font-bold">
-  CodeDesignHub<span className="text-[color:var(--accent)]">.</span>
-</span>
-          <p className="text-sm text-[color:var(--muted)] mt-3">
-            Custom website designs that turn visitors into clients.
-          </p>
-        </div>
+    <footer className="border-t border-white/10 bg-[#050c16]">
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
+        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-3">
+              <span className="grid size-11 place-items-center rounded-xl border border-white/10 bg-white/[0.06]">
+                <span className="font-[family-name:var(--font-display)] text-sm font-bold text-white">CD</span>
+              </span>
+              <span>
+                <strong className="block font-[family-name:var(--font-display)] text-base text-white">
+                  {siteConfig.name}
+                </strong>
+                <span className="text-xs text-slate-500">Premium web design &amp; development</span>
+              </span>
+            </Link>
+            <p className="mt-5 max-w-sm text-sm leading-6 text-slate-400">
+              Thoughtful website design, fast frontends, and practical full-stack builds for businesses that want a stronger digital presence.
+            </p>
+            <a
+              href={whatsappUrl()}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-cyan-300 transition hover:text-cyan-200"
+            >
+              Discuss your project
+              <span className="material-symbols-rounded text-[18px]" aria-hidden>
+                arrow_outward
+              </span>
+            </a>
+          </div>
 
-        <div>
-          <h4 className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-wider text-[color:var(--muted)]">
-            Quick Links
-          </h4>
-          <ul className="mt-3 space-y-2">
-            {quickLinks.map((link) => (
-              <li key={link.label}>
-                <a href={link.href} className="text-sm hover:text-[color:var(--accent)] transition">
-                  {link.label}
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Explore</p>
+            <ul className="mt-4 space-y-3">
+              {navigation.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-sm text-slate-300 transition hover:text-white">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Connect</p>
+            <ul className="mt-4 space-y-3">
+              <li>
+                <a href={siteConfig.socials.pinterest} target="_blank" rel="noreferrer" className="text-sm text-slate-300 transition hover:text-white">
+                  Pinterest
                 </a>
               </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-wider text-[color:var(--muted)]">
-            Connect
-          </h4>
-          <ul className="mt-3 space-y-2">
-            {socialLinks.map((link) => (
-              <li key={link.label}>
-                <a href={link.href} target="_blank" className="text-sm hover:text-[color:var(--accent)] transition">
-                  {link.label}
+              <li>
+                <a href={siteConfig.socials.github} target="_blank" rel="noreferrer" className="text-sm text-slate-300 transition hover:text-white">
+                  GitHub
                 </a>
               </li>
-            ))}
-            <li>
-              <a href={blogUrl} target="_blank" className="text-sm hover:text-[color:var(--accent)] transition">
-                Read My Blog
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+              <li>
+                <a href={siteConfig.socials.linkedin} target="_blank" rel="noreferrer" className="text-sm text-slate-300 transition hover:text-white">
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href={siteConfig.fiverr} target="_blank" rel="noreferrer" className="text-sm text-slate-300 transition hover:text-white">
+                  Fiverr
+                </a>
+              </li>
+            </ul>
+          </div>
 
-      <div className="border-t border-black/10 py-4 text-center text-xs text-[color:var(--muted)]">
-        © {year} CodeDesignHub. All rights reserved.
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Contact</p>
+            <ul className="mt-4 space-y-3">
+              <li>
+                <a href={`mailto:${siteConfig.email}`} className="break-all text-sm text-slate-300 transition hover:text-white">
+                  {siteConfig.email}
+                </a>
+              </li>
+              {legal.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-sm text-slate-300 transition hover:text-white">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} {siteConfig.name}. All rights reserved.</p>
+          <p>Designed for speed, clarity, and real enquiries.</p>
+        </div>
       </div>
     </footer>
   );

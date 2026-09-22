@@ -1,16 +1,83 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 :root {
-  --bg: #fafafa;
-  --ink: #14151a;
-  --muted: #6b6d76;
-  --surface: #f1f1f4;
-  --accent: #4c4cff;
-  --whatsapp: #25d366;
+  --bg: #07111f;
+  --surface: #0b1728;
+  --panel: #0f1d30;
+  --ink: #f7f8fc;
+  --muted: #9aa9bd;
+  --accent: #6c63ff;
+  --cyan: #22d3ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
 }
 
 body {
-  background: var(--bg);
+  margin: 0;
+  background:
+    radial-gradient(circle at 70% -10%, rgba(108, 99, 255, 0.12), transparent 35rem),
+    var(--bg);
   color: var(--ink);
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-body), Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.25);
+  color: #fff;
+}
+
+a,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+.material-symbols-rounded {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  line-height: 1;
+  user-select: none;
+}
+
+.prose-premium h2 {
+  margin-top: 2.5rem;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: #fff;
+}
+
+.prose-premium p {
+  margin-top: 1rem;
+  color: #a7b4c7;
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

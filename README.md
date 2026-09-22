@@ -1,82 +1,150 @@
-# CodeDesignHub
+# Code & Design Hub — Premium Portfolio Upgrade
 
-A client-generating portfolio website built to convert Pinterest traffic into WhatsApp/Fiverr leads.
+This version turns the existing portfolio into a cleaner, more credible, Pinterest-friendly website.
 
-## Overview
+## What changed
 
-This is a fully responsive design-studio portfolio built with Next.js and Tailwind CSS. Every design category has its own dedicated, SEO-friendly page so Pinterest Pins can link directly to relevant content instead of the homepage — keeping visitor context intact and improving conversion.
+- Premium dark visual system with restrained motion
+- Existing portfolio images reused from `public/designs`
+- Dedicated URL for every design: `/designs/[slug]`
+- Category pages retained and upgraded
+- SEO metadata, sitemap, robots rules, Open Graph metadata
+- Google Analytics support through environment variables
+- Google Search Console and Pinterest verification support
+- AdSense-ready content slots that stay hidden until IDs are configured
+- About, Contact, Privacy, Terms, Insights, and 404 pages
+- Real contact paths only: WhatsApp, email, Fiverr, GitHub, Pinterest, LinkedIn
+- No fake testimonial section or invented client numbers
+- Google fonts through `next/font/google`
+- Google Material Symbols for interface icons
+- `next/image` used for responsive, optimized portfolio images
 
-**Pinterest:** [pinterest.com/codeanddesignhub](https://www.pinterest.com/codeanddesignhub/)
+## Important: keep the existing images
 
-## Tech Stack
+This package is designed to be copied over the current repository.
 
-- **Framework:** Next.js (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Fonts:** Space Grotesk, Inter, JetBrains Mono (via `next/font/google`)
-- **Deployment:** Vercel
+Do **not** delete:
 
-## Features
+```text
+public/designs/
+app/favicon.ico
+```
 
-- **Hero Section** — Headline, sub-headline, and primary WhatsApp CTA
-- **Trust Bar** — Key stats (designs created, response time, Fiverr level)
-- **Categories** — SaaS, AI, Interior Design, Architecture, Healthcare, Finance, Real Estate, Education — each with its own dynamic route (`/categories/[slug]`)
-- **Portfolio Grid** — Filterable design showcase by category
-- **Services** — Landing Page Design, Website UI/UX, Figma Design, Frontend Development, Full Stack Development, with pricing
-- **Process** — 4-step "How It Works" breakdown
-- **Why Choose Me** — Key differentiators
-- **Reviews / Case Studies** — Sample client projects and testimonials
-- **Pricing** — Basic / Standard / Premium tiers
-- **FAQ** — Common questions, accordion-style
-- **Contact** — WhatsApp, Fiverr, email, blog link, and contact form
-- **Footer** — Quick links, social links, copyright
+The new code references the image files already stored there.
 
-## Getting Started
-
-Install dependencies:
+## Install and run
 
 ```bash
 npm install
-```
-
-Run the development server:
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Production check:
 
-## Project Structure
-app/
-page.tsx → Homepage (assembles all sections)
-layout.tsx → Root layout, fonts, metadata
-globals.css → Tailwind import + CSS variables
-categories/[slug]/ → Dynamic category pages
-components/
-Header.tsx
-Hero.tsx
-TrustBar.tsx
-Categories.tsx
-PortfolioGrid.tsx
-Services.tsx
-Process.tsx
-WhyChooseMe.tsx
-Reviews.tsx
-Pricing.tsx
-FAQ.tsx
-Contact.tsx
-Footer.tsx
+```bash
+npm run build
+```
 
+## Environment variables
 
-## Pinterest Traffic Rule
+Copy `.env.example` to `.env.local` for local testing. On Vercel, add the same keys in:
 
-Every Pin links directly to its matching category page (e.g. a SaaS design Pin links to `/categories/saas`), never to the homepage. This preserves visitor context and increases trust.
+`Project → Settings → Environment Variables`
 
-## Deployment
+Only add Analytics, Search Console, Pinterest verification, or AdSense values when you actually have them.
 
-This project is deployed on [Vercel](https://vercel.com). Pushing to the `main` branch triggers an automatic deployment.
+## Adding a new website design
 
-## Contact
+1. Put the new screenshot in a category folder, for example:
 
-For inquiries, reach out via [WhatsApp](https://wa.me/923001234567) or [Fiverr](https://fiverr.com/your-username).
+```text
+public/designs/real-estate/real-new-03.webp
+```
+
+2. Open:
+
+```text
+data/designs.ts
+```
+
+3. Add one new object to the `rows` array:
+
+```ts
+{
+  title: "Real Estate Website Concept 03",
+  category: "Real Estate",
+  categorySlug: "real-estate",
+  slug: "real-estate-website-concept-03",
+  src: "/designs/real-estate/real-new-03.webp",
+  summary: "A short, unique description of this design.",
+}
+```
+
+4. Commit and push to GitHub. Vercel will redeploy.
+
+5. After deployment, open:
+
+```text
+https://YOUR-DOMAIN.com/designs/real-estate-website-concept-03
+```
+
+6. Use **that exact URL** as the destination link of the matching Pinterest Pin.
+
+This is better than sending every Pin to the homepage because the visitor sees the exact design they clicked.
+
+## Pinterest publishing rule
+
+Use this flow:
+
+```text
+Pinterest Pin
+   ↓
+Matching /designs/[slug] page
+   ↓
+Full design + description
+   ↓
+"Request a site like this"
+   ↓
+WhatsApp / email enquiry
+```
+
+For category roundup Pins, use a category URL such as:
+
+```text
+/categories/real-estate
+```
+
+For an individual design Pin, always prefer the individual design URL.
+
+## Analytics
+
+Set:
+
+```text
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+The Analytics script is not loaded when this variable is empty.
+
+## AdSense
+
+Do not insert random ad code manually into every component.
+
+Once you have a valid AdSense publisher ID and ad-slot ID, set:
+
+```text
+NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-XXXXXXXXXXXXXXXX
+NEXT_PUBLIC_ADSENSE_SLOT=XXXXXXXXXX
+```
+
+Ad components already exist on design/article pages and remain invisible while these variables are blank.
+
+## Main files you will edit in the future
+
+- `data/designs.ts` — add/remove portfolio designs
+- `data/site.ts` — contact details and social links
+- `data/insights.ts` — add new articles
+- `app/globals.css` — global visual styling
+- `.env.local` / Vercel env variables — analytics, verification, AdSense
+
+See `SETUP-URDU.md` for the same workflow in Urdu.

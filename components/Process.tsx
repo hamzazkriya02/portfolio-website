@@ -1,35 +1,49 @@
+import SectionHeading from "@/components/SectionHeading";
+
 const steps = [
-  { number: "01", title: "Message me on WhatsApp", description: "Reach out and tell me briefly what you need." },
-  { number: "02", title: "Share your requirements", description: "Send your business details, references, and goals." },
-  { number: "03", title: "Get a free mockup", description: "I design a sample so you can see the direction before committing." },
-  { number: "04", title: "Approve and I build it", description: "Once you're happy, I complete the full design or site." },
+  {
+    number: "01",
+    title: "Brief",
+    text: "We define your audience, pages, references, goals, and the action you want visitors to take.",
+  },
+  {
+    number: "02",
+    title: "Direction",
+    text: "I create the visual direction and page structure before adding detail, motion, and responsive behavior.",
+  },
+  {
+    number: "03",
+    title: "Build",
+    text: "The approved direction becomes a fast, responsive website with clean components and optimized assets.",
+  },
+  {
+    number: "04",
+    title: "Launch",
+    text: "We review mobile and desktop, connect analytics or required services, and ship the production version.",
+  },
 ];
 
 export default function Process() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-      <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-wider text-[color:var(--accent)]">
-        Simple &amp; Fast
-      </span>
+    <section className="border-y border-white/10 bg-white/[0.018] py-20 sm:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="Process"
+          title="Simple enough to move fast. Structured enough to stay professional."
+          body="A clear four-step workflow keeps the project focused without adding unnecessary meetings or complexity."
+        />
 
-      <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold mt-3">
-        How It Works
-      </h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10">
-        {steps.map((step) => (
-          <div key={step.number} className="border-t-2 border-[color:var(--accent)] pt-4">
-            <span className="font-[family-name:var(--font-mono)] text-2xl font-medium text-[color:var(--accent)]">
-              {step.number}
-            </span>
-            <h3 className="font-[family-name:var(--font-display)] font-medium mt-2">
-              {step.title}
-            </h3>
-            <p className="text-[color:var(--muted)] text-sm mt-2">
-              {step.description}
-            </p>
-          </div>
-        ))}
+        <div className="mt-12 grid gap-px overflow-hidden rounded-[26px] border border-white/10 bg-white/10 md:grid-cols-2 xl:grid-cols-4">
+          {steps.map((step) => (
+            <article key={step.number} className="bg-[#091524] p-6 sm:p-7">
+              <span className="font-[family-name:var(--font-display)] text-sm font-bold text-cyan-300">{step.number}</span>
+              <h3 className="mt-10 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-[-0.03em] text-white">
+                {step.title}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-slate-400">{step.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,57 +1,135 @@
-﻿"use client";
+"use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { siteConfig, whatsappUrl } from "@/data/site";
 
-const navLinks = [
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Services", href: "#services" },
-  { label: "Categories", href: "#categories" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+const links = [
+  { label: "Work", href: "/designs" },
+  { label: "Services", href: "/#services" },
+  { label: "About", href: "/about" },
+  { label: "Insights", href: "/insights" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 bg-[color:var(--bg)]/90 backdrop-blur border-b border-black/10">
-      <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-       <a href="#" className="font-[family-name:var(--font-display)] text-lg font-bold">
-          CodeDesignHub<span className="text-[color:var(--accent)]">.</span>
-       </a>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#07111f]/80 backdrop-blur-xl">
+      <div className="mx-auto flex h-[74px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+        <Link href="/" className="group flex items-center gap-3" aria-label={`${siteConfig.name} home`}>
+          <span className="grid size-10 place-items-center rounded-xl border border-white/10 bg-white/[0.06] shadow-[0_10px_35px_rgba(34,211,238,0.10)]">
+            <span className="font-[family-name:var(--font-display)] text-sm font-bold tracking-tight text-white">
+              CD
+            </span>
+          </span>
+          <span className="leading-none">
+            <strong className="block font-[family-name:var(--font-display)] text-sm font-bold tracking-[-0.02em] text-white sm:text-base">
+              Code &amp; Design Hub
+            </strong>
+            <span className="mt-1 hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400 sm:block">
+              Design + Development
+            </span>
+          </span>
+        </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className="text-sm text-[color:var(--muted)] hover:text-[color:var(--ink)] transition">
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-slate-300 transition hover:text-white"
+            >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a href="#contact" className="hidden md:inline-block bg-[color:var(--whatsapp)] text-white text-sm font-medium px-4 py-2 rounded-lg hover:opacity-90 transition">
-          Chat on WhatsApp
-        </a>
+        <div className="hidden items-center gap-3 lg:flex">
+          <a
+            href={siteConfig.socials.pinterest}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-10 items-center gap-2 rounded-full border border-white/10 px-4 text-sm font-semibold text-slate-200 transition hover:border-white/20 hover:bg-white/[0.05]"
+          >
+            <span className="material-symbols-rounded text-[18px]" aria-hidden>
+              interests
+            </span>
+            Pinterest
+          </a>
+          <a
+            href={whatsappUrl()}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-10 items-center gap-2 rounded-full bg-white px-4 text-sm font-bold text-slate-950 transition hover:-translate-y-0.5 hover:bg-cyan-100"
+          >
+            Start a project
+            <span className="material-symbols-rounded text-[18px]" aria-hidden>
+              arrow_outward
+            </span>
+          </a>
+        </div>
 
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-[color:var(--ink)]" aria-label="Toggle menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-          </svg>
+        <button
+          type="button"
+          onClick={() => setOpen((value) => !value)}
+          className="grid size-11 place-items-center rounded-xl border border-white/10 text-white lg:hidden"
+          aria-expanded={open}
+          aria-label={open ? "Close menu" : "Open menu"}
+        >
+          <span className="material-symbols-rounded" aria-hidden>
+            {open ? "close" : "menu"}
+          </span>
         </button>
       </div>
 
-      {isOpen && (
-        <nav className="md:hidden px-6 pb-4 flex flex-col gap-3">
-          {navLinks.map((link) => (
-            <a key={link.label} href={link.href} onClick={() => setIsOpen(false)} className="text-sm text-[color:var(--muted)]">
-              {link.label}
+      {open && (
+        <div className="fixed inset-x-0 top-[74px] h-[calc(100dvh-74px)] border-t border-white/10 bg-[#07111f] px-5 py-6 lg:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col" aria-label="Mobile navigation">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between border-b border-white/10 py-5 font-[family-name:var(--font-display)] text-2xl font-semibold text-white"
+              >
+                {link.label}
+                <span className="material-symbols-rounded text-slate-500" aria-hidden>
+                  arrow_outward
+                </span>
+              </Link>
+            ))}
+          </nav>
+          <div className="mx-auto mt-8 grid max-w-7xl gap-3">
+            <a
+              href={whatsappUrl()}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-white px-5 font-bold text-slate-950"
+            >
+              Start a project
+              <span className="material-symbols-rounded text-[20px]" aria-hidden>
+                arrow_outward
+              </span>
             </a>
-          ))}
-          <a href="#contact" className="bg-[color:var(--whatsapp)] text-white text-sm font-medium px-4 py-2 rounded-lg text-center">
-            Chat on WhatsApp
-          </a>
-        </nav>
+            <a
+              href={siteConfig.socials.pinterest}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 px-5 font-semibold text-white"
+            >
+              View Pinterest
+            </a>
+          </div>
+        </div>
       )}
     </header>
   );
