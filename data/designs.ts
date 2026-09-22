@@ -111,6 +111,16 @@ const rows: Omit<Design, "id">[] = [
     summary: "An editorial property website concept with a strong visual first impression and premium presentation.",
     featured: true,
   },
+    {
+    title: "Real Estate Website Concept 03",
+    category: "Real Estate",
+    categorySlug: "real-estate",
+    slug: "real-estate-website-concept-03",
+    src: "/designs/real-estate/real-estate-website-concept-03.png",
+    summary:
+      "A premium real-estate website concept with luxury property visuals, strong trust signals, featured listings, and clear lead-generation calls to action.",
+    featured: true,
+  },
 
   {
     title: "Healthcare Website Concept 01",
