@@ -79,13 +79,23 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0"
-        />
-      </head>
+  <meta
+    name="google-adsense-account"
+    content="ca-pub-8078423561722055"
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossOrigin="anonymous"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0"
+  />
+</head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} min-h-screen overflow-x-hidden antialiased`}>
         <a
           href="#main-content"
