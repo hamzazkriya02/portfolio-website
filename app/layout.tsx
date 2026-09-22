@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+ const adsenseClient =process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-8078423561722055";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
